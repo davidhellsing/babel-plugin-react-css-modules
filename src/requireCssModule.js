@@ -107,6 +107,8 @@ export default (cssSourceFilePath: string, options: OptionsType): StyleModuleMap
       context: options.context || process.cwd()
     });
   }
+  
+  console.log(generateScopedName);
 
   const filetypeOptions = getFiletypeOptions(cssSourceFilePath, options.filetypes);
 
