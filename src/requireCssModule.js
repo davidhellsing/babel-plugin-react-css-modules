@@ -14,11 +14,14 @@ import LocalByDefault from 'postcss-modules-local-by-default';
 import Parser from 'postcss-modules-parser';
 import Scope from 'postcss-modules-scope';
 import Values from 'postcss-modules-values';
+import incsrt from 'incstr';
 import type {
   GenerateScopedNameConfigurationType,
   StyleModuleMapType
 } from './types';
 import optionsDefaults from './schemas/optionsDefaults';
+
+const nextId = incstr.idGenerator();
 
 type FiletypeOptionsType = {|
   +syntax: string,
@@ -98,8 +101,8 @@ export default (cssSourceFilePath: string, options: OptionsType): StyleModuleMap
   // eslint-disable-next-line prefer-const
   let runner;
 
-  let generateScopedName;
-
+  let generateScopedName = () => `${nextId()}_${nextId()}`
+  /*
   if (options.generateScopedName && typeof options.generateScopedName === 'function') {
     generateScopedName = options.generateScopedName;
   } else {
@@ -107,6 +110,7 @@ export default (cssSourceFilePath: string, options: OptionsType): StyleModuleMap
       context: options.context || process.cwd()
     });
   }
+  */
   
   console.log(generateScopedName);
 
